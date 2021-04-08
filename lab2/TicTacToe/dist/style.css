@@ -1,16 +1,3 @@
-h1 {
-	text-align: center;
-	font-size: 55px;
-	color:darkblue;
-}
-
-.wrapper {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
 .table {
 	width: 300px;
 	margin: 30px;
@@ -22,21 +9,10 @@ h1 {
   border: 3px solid grey;
   background: rgb(184, 183, 236);
   font-size: 60px;
+  text-align: center;
 }
 
 .cell:hover {
   background: rgb(137, 178, 231);
   text-align: center;
-}
-
-.resetButton {
-  background-color: rgb(137, 178, 231);
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  font-size: 16px;
-}
-
-.resetButton:hover{
-	background-color: rgb(76, 144, 233);
 }
