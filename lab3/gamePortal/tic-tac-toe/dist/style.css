@@ -1,0 +1,18 @@
+.table {
+	width: 300px;
+	margin: 30px;
+}
+
+.cell {
+  width:85px;
+  height:85px;
+  border: 3px solid grey;
+  background: rgb(184, 183, 236);
+  font-size: 60px;
+  text-align: center;
+}
+
+.cell:hover {
+  background: rgb(137, 178, 231);
+  text-align: center;
+}
