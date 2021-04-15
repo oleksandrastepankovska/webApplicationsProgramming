@@ -10,8 +10,23 @@ const config = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      module.exports = {
+        module: {
+          rules: [
+            {
+              test: /\.s[ac]ss$/i,
+              use: [
+                'style-loader',
+                'css-loader',
+                'sass-loader',
+              ],
+            },
+          ],
+        },
+      }
     ],
   },
+  
   resolve: {
     extensions: [ '.tsx', '.ts', '.js' ],
   },
@@ -20,4 +35,7 @@ const config = {
     filename: 'bundle.js'
   }
 };
+
+
+
 module.exports = config;
