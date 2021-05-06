@@ -9,7 +9,12 @@ export class LocalStorageStore implements NoteStore {
     }
     
     public addNote(note: Note): void {
-    
+        let notesValues = <string>localStorage.getItem('notes');
+        let notes = <Note[]>JSON.parse(notesValues);
+        if(!notes)
+            notes = [];
+        notes.push(note);
+        localStorage.setItem('notes', JSON.stringify(notes));
     }
 
     public getNotes(): Note[] {
