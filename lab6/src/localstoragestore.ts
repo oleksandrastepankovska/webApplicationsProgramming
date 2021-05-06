@@ -5,7 +5,14 @@ import { NoteStore } from './notestore';
 export class LocalStorageStore implements NoteStore {
 
     deleteNote(id: Guid): void {
-        throw new Error('Method not implemented.');
+        let notesValue= <string>localStorage.getItem('notes');
+        let oldNotes = <Note[]>JSON.parse(notesValue);
+        let newNotes: Note[]=[];
+        oldNotes.forEach((note) => {
+            if(note.id!==id)
+                newNotes.push(note)
+        })
+        localStorage.setItem('notes', JSON.stringify(newNotes));
     }
     
     public addNote(note: Note): void {
