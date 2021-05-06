@@ -9,7 +9,7 @@ export class NoteBoard {
     storage: NoteStore;
 
     constructor() {
-        this.storage = new LocalStorageStore();
+        this.storage = new SessionStorageStore();
         this.addTitleInput();
         this.addContentInput();
         this.addButton();                        
