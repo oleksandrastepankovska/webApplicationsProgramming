@@ -18,4 +18,6 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   console.log(req.params.id);
+  res.status(404).delete(product);
+  products.push(product);
 }
