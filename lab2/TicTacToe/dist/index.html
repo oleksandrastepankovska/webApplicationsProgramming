@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Tic Tac Toe</title>
 </head>
+
 <body>
-    <table id="tictactoe"></table>
+
+    <div class="container">
+        <div id="winner" class="nonevisible">
+            <h2 id="win">Winner</h2>
+            <button onClick="window.location.reload();">Restart</button>
+        </div>
+        <h1 id="current"></h1>
+        <div>
+            <label for="number">Table Size:</label>
+            <input type="number" id="num" name="number" min="3" max="20" step="1" value="3">
+            <button id="play">Play</button>
+        </div>
+        <table id="tictactoe">
+
+        </table>
+
+    </div>
+
+
     <script src="bundle.js"></script>
 </body>
+
 </html>

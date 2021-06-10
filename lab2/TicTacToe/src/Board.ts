@@ -1,29 +1,63 @@
-import {Cell} from './Cell';
+import { Cell } from "./Cell";
+import { Check } from "./Check";
+
 export class Board {
-  cells: Cell[];
-  currentSymbol: number = 1;
+    cells: Cell[];
+    currentSymbol: number;
+    
 
-  constructor(size: number) {
-    this.cells = new Array(size);
-    let table = <HTMLTableElement>document.getElementById("tictactoe");
-    let i = 0;
+    constructor(size: number) {
+        this.cells = new Array(size);
+        this.currentSymbol = 1;
 
-    for (let r = 0; r < size; r++) {
-      let row = table.insertRow(r);
-      for (let c = 0; c < size; c++) {
-        let cell = <HTMLTableDataCellElement>row.insertCell(c);
-        cell.className = "cell";
-        const newCell = new Cell(cell);
-        this.cells[i] = newCell;
-        cell.addEventListener("click", () => this.makeMove(newCell), false);
-        i++;
-      }
+        let table = <HTMLTableElement>document.getElementById("tictactoe");
+        
+        let i = 0;
+        for (let r = 0; r < size; r++) {
+            let row = table.insertRow(r);
+            for (let c = 0; c < size; c++) {
+                let cell = <HTMLTableDataCellElement>row.insertCell(c);
+                cell.className = 'cell';
+                const newCell = new Cell(cell);
+                this.cells[i] = newCell;
+                cell.addEventListener("click", () => this.makeMove(newCell), false);
+                i++;
+            }  
+        }
+       this.current(this.currentSymbol)
     }
-  }
 
-  makeMove(cell: Cell): void {
-    cell.setCellValue(this.currentSymbol);
-    this.currentSymbol = this.currentSymbol === 1 ? -1 : 1;
-    cell.fillCell(this.currentSymbol);
-  }
+    makeMove(cell: Cell): void {
+        if (cell.cellValue==0) {
+            cell.setCellValue(this.currentSymbol);
+            if (this.currentSymbol==1) {
+                this.currentSymbol = -1;
+            }else if (this.currentSymbol== -1){
+                this.currentSymbol = 1;
+            }
+        }
+      new Check(this.cells);
+      this.current(this.currentSymbol);
+    };
+
+    current(currentSymbol: number){
+        let currentElement = <HTMLTableElement>document.getElementById("current");
+
+        const crossImage = new Image();
+        const circleImage = new Image();
+        crossImage.src="../assets/x.png";
+        circleImage.src="../assets/O.png";
+        crossImage.classList.add("img");
+        circleImage.classList.add("img");
+        currentElement.innerHTML="Turn: ";
+        if (currentSymbol == 1) {
+          currentElement.appendChild(crossImage);
+        }
+        else if (currentSymbol == -1){
+          currentElement.appendChild(circleImage);
+        }
+      
+    }
+
+
 }
