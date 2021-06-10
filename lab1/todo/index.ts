@@ -19,7 +19,7 @@
     ]
     
     function logPerson(person: IPerson) {
-        console.log(this.name + this.surname + this.age + this.role);
+        console.log(`${person.name} ${person.surname} ${person.age} ${person.role}`);
     // TODO: dodać wypisywanie na konsoli danych osoby: "imię nazwisko, wiek, rola"
     }
     
@@ -31,16 +31,20 @@
     }
 
 
-    // 1. Przy pomocy funkcji logPerson wypisać osoby z tablicy users i admins (patrz foreach)
-    const logPersoneResponce = [...users, ...admins].forEach(user => logPerson(user));
-    console.log(logPersoneResponce);
+    // +++1. Przy pomocy funkcji logPerson wypisać osoby z tablicy users i admins (patrz foreach)
+    console.log('wypisać osoby z tablicy users i admins:')
+    users.forEach(el => logPerson(el));
+    admins.forEach(el => logPerson(el));
 
-    // 2. Złączyć tablice users i admins i wypisać zawartość złączonej tablicy na konsoli (patrz operator spread)
+    // +++2. Złączyć tablice users i admins i wypisać zawartość złączonej tablicy na konsoli (patrz operator spread)
+    console.log('spread:')
     const usersAndAdmins = [...users, ...admins];
-    console.log(usersAndAdmins.forEach(user => logPerson(user)));
+    console.log(usersAndAdmins.forEach(el => logPerson(el)));
 
-    // 3. Wypisać osoby powyżej 25 lat (patrz operator filter)
+    // +++3. Wypisać osoby powyżej 25 lat (patrz operator filter)
+    console.log('osoby powyżej 25 lat:')
     console.log(usersAndAdmins.filter(item => item.age > 25));
 
-    // 4. Wypisać osoby o imieniu Adam (zaimplementować funkcję filterPersons) -> const filtered = filterPersons(persons, { name: 'Adam' });
+    // +++4. Wypisać osoby o imieniu Adam (zaimplementować funkcję filterPersons) -> const filtered = filterPersons(persons, { name: 'Adam' });
+    console.log('osoby o imieniu Adam:')
     console.log(filterPersons(usersAndAdmins, {name: 'Adam'}));

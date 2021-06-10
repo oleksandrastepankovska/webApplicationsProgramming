@@ -13,7 +13,7 @@ var admins = [
     { name: 'Adam', surname: 'Terry', age: 24, role: 'admin' },
 ];
 function logPerson(person) {
-    console.log(this.name + this.surname + this.age + this.role);
+    console.log(person.name + " " + person.surname + " " + person.age + " " + person.role);
     // TODO: dodać wypisywanie na konsoli danych osoby: "imię nazwisko, wiek, rola"
 }
 function filterPersons(persons, criteria) {
@@ -23,12 +23,16 @@ function filterPersons(persons, criteria) {
     // TODO: zaimplementować funkcję, która przefiltruje tablicę persons za pomocą predykatu criteria
 }
 // 1. Przy pomocy funkcji logPerson wypisać osoby z tablicy users i admins (patrz foreach)
-var logPersoneResponce = __spreadArray(__spreadArray([], users), admins).forEach(function (user) { return logPerson(user); });
-console.log(logPersoneResponce);
+console.log('wypisać osoby z tablicy users i admins:');
+users.forEach(function (el) { return logPerson(el); });
+admins.forEach(function (el) { return logPerson(el); });
 // 2. Złączyć tablice users i admins i wypisać zawartość złączonej tablicy na konsoli (patrz operator spread)
+console.log('spread:');
 var usersAndAdmins = __spreadArray(__spreadArray([], users), admins);
-console.log(usersAndAdmins.forEach(function (user) { return logPerson(user); }));
-// 3. Wypisać osoby powyżej 25 lat (patrz operator filter)
+console.log(usersAndAdmins.forEach(function (el) { return logPerson(el); }));
+// +++3. Wypisać osoby powyżej 25 lat (patrz operator filter)
+console.log('osoby powyżej 25 lat:');
 console.log(usersAndAdmins.filter(function (item) { return item.age > 25; }));
-// 4. Wypisać osoby o imieniu Adam (zaimplementować funkcję filterPersons) -> const filtered = filterPersons(persons, { name: 'Adam' });
+// +++ 4. Wypisać osoby o imieniu Adam (zaimplementować funkcję filterPersons) -> const filtered = filterPersons(persons, { name: 'Adam' });
+console.log('osoby o imieniu Adam:');
 console.log(filterPersons(usersAndAdmins, { name: 'Adam' }));
